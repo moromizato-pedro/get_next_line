@@ -6,7 +6,7 @@
 /*   By: pedrohe3 <pedrohe3@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 13:06:40 by pedrohe3          #+#    #+#             */
-/*   Updated: 2026/02/11 00:32:37 by pedrohe3         ###   ########.fr       */
+/*   Updated: 2026/02/11 17:13:12 by pedrohe3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strcpy(char *dst, char *src)
 	return (dst);
 }
 
-char	*ft_strlcat(char **dst, char *src, int n)
+char	*ft_strncat(char **dst, char *src, int n)
 {
 	int		len;
 	int		i;
@@ -50,7 +50,8 @@ char	*ft_strlcat(char **dst, char *src, int n)
 	while (++j < n && src[j])
 		aux[i + j] = src[j];
 	aux[i + j] = '\0';
-	ft_free(dst);
+	if (*dst)
+		free(*dst);
 	*dst = aux;
 	return (*dst);
 }
@@ -76,29 +77,7 @@ int	read_batch(int fd, char *buff)
 
 	bytes_read = read(fd, buff, BUFFER_SIZE);
 	if (bytes_read < 0)
-	{
 		return (-1);
-	}
 	buff[bytes_read] = '\0';
 	return (bytes_read);
-}
-
-void	ft_free(char **ptr)
-{
-	if (*ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
-}
-
-char	*ft_strchr(char *str, int c)
-{
-	while (*str)
-	{
-		if (*str == (char)c)
-			return (str);
-		str++;
-	}
-	return (NULL);
 }
