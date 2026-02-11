@@ -6,7 +6,7 @@
 /*   By: pedrohe3 <pedrohe3@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 13:06:40 by pedrohe3          #+#    #+#             */
-/*   Updated: 2026/02/04 18:20:49 by pedrohe3         ###   ########.fr       */
+/*   Updated: 2026/02/11 00:32:37 by pedrohe3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,11 @@ int	read_batch(int fd, char *buff)
 {
 	int	bytes_read;
 
-	buff[0] = '\0';
 	bytes_read = read(fd, buff, BUFFER_SIZE);
 	if (bytes_read < 0)
+	{
 		return (-1);
+	}
 	buff[bytes_read] = '\0';
 	return (bytes_read);
 }
@@ -89,4 +90,15 @@ void	ft_free(char **ptr)
 		free(*ptr);
 		*ptr = NULL;
 	}
+}
+
+char	*ft_strchr(char *str, int c)
+{
+	while (*str)
+	{
+		if (*str == (char)c)
+			return (str);
+		str++;
+	}
+	return (NULL);
 }

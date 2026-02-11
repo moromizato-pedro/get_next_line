@@ -6,12 +6,40 @@
 /*   By: pedrohe3 <pedrohe3@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:28:00 by pedrohe3          #+#    #+#             */
-/*   Updated: 2026/02/10 19:10:23 by pedrohe3         ###   ########.fr       */
+/*   Updated: 2026/02/11 01:05:43 by pedrohe3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+char	*get_next_line(int fd)
+{
+	static char	buff[BUFFER_SIZE + 1];
+	char		*next_line;
+	int			i;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	next_line = NULL;
+	i = 1;
+	while (1)
+	{
+		if (!buff[0])
+			i = read_batch(fd, buff);
+		if (i < 0)
+			return (free(next_line), NULL);
+		else if (i == 0)
+			return (next_line);
+		i = 0;
+		while (buff[i] && buff[i] != '\n')
+			i++;
+		ft_strlcat(&next_line, buff, i + (buff[i] == '\n'));
+		if (buff[i] == '\n')
+			return (ft_strcpy(buff, buff + i + (buff[i] == '\n')), next_line);
+		buff[0] = '\0';
+	}
+}
+/*
 void	putstr(char *buff)
 {
 	int	i;
@@ -39,42 +67,6 @@ void	putstr(char *buff)
 	printf("\"\n");
 }
 
-char	*get_next_line(int fd)
-{
-	static char	buff[BUFFER_SIZE + 1];
-	char		*next_line;
-	int			i;
-	int			read_file;
-
-	if (fd < 0)
-		return (NULL);
-	next_line = NULL;
-	// I think I can remove "i" and reset the buff by doing buff - ft_strlen(next_line)
-	i = -1;
-	read_file = 1;
-	while (read_file >= 0)
-	{
-		if (ft_strlen(buff) <= 0)
-			read_file = read_batch(fd, buff);
-		if (read_file == 0)
-			return (next_line);
-		if (buff[++i] == '\n')
-		{
-			if (ft_strlen(buff) > 0)
-				ft_strlcat(&next_line, buff, i + 1);
-			ft_strcpy(buff, buff + i + 1);
-			return (next_line);
-		}
-		else if (buff[i] == '\0')
-		{
-			ft_strlcat(&next_line, buff, ft_strlen(buff));
-			buff[0] = '\0';
-			i = -1;
-		}
-	}
-	return (ft_free(&next_line), NULL);
-}
-/*
 int	main(void)
 {
 
