@@ -78,10 +78,10 @@ int	main(void)
 
 ### Compilation and Linking
 To build the executable from the source code, you need the following command:
-    cc -Wall -Werror -Wextra main.c get_next_line.c get_next_line_utils.c -o test
+`cc -Wall -Werror -Wextra main.c get_next_line.c get_next_line_utils.c -o test`
 
 The command above temporary creates the compiled object from "main.c" to produce the final executable named "test". All of that can be viewed in smaller fragments:
-- The `-Wall -Werror -Wextra` are some flags that 42 requires to compile a source file. Thddey ensure to explicit block the compilation and tell the user if something in the code might cause a problem if it is compiled as it is.
+- The `-Wall -Werror -Wextra` are some flags that 42 requires to compile a source file. They ensure to explicit block the compilation and tell the user if something in the code might cause a problem if it is compiled as it is.
 - The `cc main.c` compiles the source code (creates an object file, the .o, for the main.c)
     - The object file is the source code transformed to machine code, which is the only language that the computer understands, and copy it into the executable that will be created.
 - The `-o test` flag indicates that we want to choose the word after the flag to be name of the executable created.
