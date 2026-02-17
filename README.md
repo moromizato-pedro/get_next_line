@@ -79,7 +79,7 @@ int	main(void)
 ### Compilation and Linking
 To build the executable from the source code, you need the following command:
 ```
-cc -Wall -Werror -Wextra main.c get_next_line.c get_next_line_utils.c -o test
+cc -Wall -Werror -Wextra main.c get_next_line.c get_next_line_utils.c -o test -D BUFFER_SIZE=42
 ```
 The command above temporary creates the compiled object from each of the .c files to produce the final executable named "test". All of that can be viewed in smaller fragments:
 - The `-Wall -Werror -Wextra` are some flags that 42 requires to compile a source file. They ensure to explicit block the compilation and tell the user if something in the code might cause a problem if it is compiled as it is.
@@ -87,7 +87,7 @@ The command above temporary creates the compiled object from each of the .c file
     - The object file is the source code transformed to machine code, which is the only language that the computer understands, and copy it into the executable that will be created.
 - The `-o test` flag indicates that we want to choose the word after the flag to be name of the executable created.
     - This executable will be a standalone binary, that means a file that contains all the machine code necessary to work properly
-
+- The `-D BUFFER_SIZE=42` is a requirement of the project that sets the buffer size. Without that the code will not compile, as it dictates how the get_next_line should work.
 
 ### Run the program
 Finally, after the executable is created, you just need to run the command bellow using the name chosen for the executable:
@@ -96,6 +96,7 @@ Finally, after the executable is created, you just need to run the command bello
 # Resources
 - www.opengroup.org
 - AI was used to help understanding how to attack and search for potential reasons for the leaks. It was also used to make the code cleaner, direct and shorter, helping to refactor the code to reduce the amount of lines and remove redundant code.
+- AI was also used to improve the README.md, checking if the information provided made sense and if any crucial information was missing.
 
 # Algorithm
 - The decision to use static variables was based in the indication made by the project guidelines. It allowed to keep track of the buffer used even in between different calls of the get_next_line function, and was a key aspect for the completion of the project.
