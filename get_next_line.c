@@ -6,7 +6,7 @@
 /*   By: pedrohe3 <pedrohe3@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:28:00 by pedrohe3          #+#    #+#             */
-/*   Updated: 2026/02/11 20:11:53 by pedrohe3         ###   ########.fr       */
+/*   Updated: 2026/02/17 20:43:12 by pedrohe3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,59 +39,3 @@ char	*get_next_line(int fd)
 		buff[0] = '\0';
 	}
 }
-/*
-void	ft_putstr(char *buff)
-{
-	int	i;
-
-	i = 0;
-	if (!buff)
-	{
-		printf("(null)\n");
-		return ;
-	}
-	printf("\"");
-	while(1)
-	{
-		if (buff[i] == '\n')
-			printf("\\n");
-		else if (buff[i] == '\0')
-		{
-			printf("\\0");
-			break ;
-		}
-		else
-			printf("%c", buff[i]);
-		i++;
-	}
-	printf("\"\n");
-}
-
-int	main(void)
-{
-
-	int	fd = open("/home/pedro/42/get_next_line/test", O_RDONLY);
-	int	fd2 = open("/home/pedro/42/get_next_line/test2", O_RDONLY);
-	int	fd3 = open("/home/pedro/42/get_next_line/test3", O_RDONLY);
-	char	*res;
-	int	depth = 0;
-
-	do
-	{
-		res = NULL;
-		printf("\n\nCalling get_next_line - depth (%d)\n", depth);
-		res = get_next_line(fd);
-		depth++;
-		if (!res)
-			break;
-		printf("len: %d | res: ", ft_strlen(res));
-		ft_putstr(res);
-		//if (depth == 2)
-		//	break ;
-	} while(depth < 11);
-	close(fd);
-	close(fd2);
-	printf("End of program\n");
-	return (0);
-}
-*/
