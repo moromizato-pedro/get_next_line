@@ -1,7 +1,7 @@
 _This project has been created as part of the 42 curriculum by pedrohe3_
 
 # Description
-Get_new_line is a project with the objective of teaching about static variables through the implementation of a program that given a file descriptor it will return the next line from it, being possible to execute the function more than once to retrieve the consecutive lines.
+Get_next_line is a project with the objective of teaching about static variables through the implementation of a program that given a file descriptor it will return the next line from it, being possible to execute the function more than once to retrieve the consecutive lines.
 
 # Instructions
 To be able to compile and execute the program some steps are needed.
@@ -14,7 +14,7 @@ The only library necessary in your source code is the "get_next_line.h" and just
 
     #include "get_next_line.h"
 
-If no source code is already prepared, the code bellow is an example that can be used to test the get_next_line function for any text file. For the matter of this guide we will refer to "main.c" as the source code that uses the get_next_line function:
+If no source code is already prepared, the code bellow is an example that can be used to test the get_next_line function for any text file. For the matter of this guide we will refer to it as "main.c" as the source code that uses the get_next_line function:
 ```
 #include "get_next_line.h"
 
@@ -54,7 +54,7 @@ int	main(void)
 	char	*res;
 	int		depth = 0;
 	
-	# Will try to read the next 11 lines
+	# Will try to read the next 11 lines but will stop if the end of file is reached first
 	while (depth < 11)
 	{
 		# Resets the res pointer
@@ -78,11 +78,10 @@ int	main(void)
 
 ### Compilation and Linking
 To build the executable from the source code, you need the following command:
-
-    cc -Wall -Werror -Wextra main.c -o test
+    cc -Wall -Werror -Wextra main.c get_next_line.c get_next_line_utils.c -o test
 
 The command above temporary creates the compiled object from "main.c" to produce the final executable named "test". All of that can be viewed in smaller fragments:
-- The `-Wall -Werror -Wextra` are some flags that 42 requires to compile a source file. They ensure to explicit block the compilation and tell the user if something in the code might cause a problem if it is compiled as it is.
+- The `-Wall -Werror -Wextra` are some flags that 42 requires to compile a source file. Thddey ensure to explicit block the compilation and tell the user if something in the code might cause a problem if it is compiled as it is.
 - The `cc main.c` compiles the source code (creates an object file, the .o, for the main.c)
     - The object file is the source code transformed to machine code, which is the only language that the computer understands, and copy it into the executable that will be created.
 - The `-o test` flag indicates that we want to choose the word after the flag to be name of the executable created.
