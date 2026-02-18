@@ -18,34 +18,6 @@ If no source code is already prepared, the code bellow is an example that can be
 ```
 #include "get_next_line.h"
 
-# This is an auxiliary function to allow you to see if a '\n' or '\0' is present in your string
-void	ft_putstr(char *buff)
-{
-	int	i;
-
-	i = 0;
-	if (!buff)
-	{
-		printf("(null)\n");
-		return ;
-	}
-	printf("\"");
-	while(1)
-	{
-		if (buff[i] == '\n')
-			printf("\\n");
-		else if (buff[i] == '\0')
-		{
-			printf("\\0");
-			break ;
-		}
-		else
-			printf("%c", buff[i]);
-		i++;
-	}
-	printf("\"\n");
-}
-
 int	main(void)
 {
 	# Opens the file in Read Only mode, in order to read it.
@@ -67,8 +39,7 @@ int	main(void)
 			break;
 		}
 		# Prints the line returned and its size
-		printf("len: %d | res: ", ft_strlen(res));
-		ft_putstr(res);
+		printf("len: %d | res: %s\n", ft_strlen(res), res);
 		depth++;
 	} 
 	close(fd);

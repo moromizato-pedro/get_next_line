@@ -6,14 +6,13 @@
 /*   By: pedrohe3 <pedrohe3@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:29:55 by pedrohe3          #+#    #+#             */
-/*   Updated: 2026/02/11 18:05:18 by pedrohe3         ###   ########.fr       */
+/*   Updated: 2026/02/18 14:08:46 by pedrohe3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
