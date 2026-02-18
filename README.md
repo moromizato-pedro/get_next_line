@@ -17,6 +17,8 @@ The only library necessary in your source code is the "get_next_line.h" and just
 If no source code is already prepared, the code bellow is an example that can be used to test the get_next_line function for any text file. For the matter of this guide we will refer to it as "main.c" as the source code that uses the get_next_line function:
 ```
 #include "get_next_line.h"
+# stdio.h is just to be able to use printf
+#include <stdio.h>
 
 int	main(void)
 {
